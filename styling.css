@@ -6462,7 +6462,7 @@ textarea.w-input, textarea.w-select {
 .word-mover {
   display: flex;
   flex-direction: column;
-  animation: wordScroll 10s infinite ease-in-out;
+  animation: wordScroll 5s infinite ease-in-out;
   
 }
 
