@@ -222,11 +222,15 @@
             });
 
             // Close when clicking any nav link (mobile UX best practice)
-            const navLinks = document.querySelectorAll('.w-nav-link');
-                navLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-             });
+           const navLinks = document.querySelectorAll('.w-nav-link');
 
+            navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('open')) {
+                closeMenu();
+                }
+            });
+            });
             });
         </script>
     </body>
