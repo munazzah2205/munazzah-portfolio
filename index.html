@@ -179,14 +179,8 @@
 
             if (!menuBtn || !navMenu) return;
 
-            // Create overlay dynamically
-            const overlay = document.createElement('div');
-            overlay.classList.add('mobile-overlay');
-            document.body.appendChild(overlay);
-
             function openMenu() {
                 navMenu.classList.add('open');
-                overlay.classList.add('active');
                 menuBtn.classList.add('active');
                 document.body.classList.add('menu-open');
                 menuBtn.setAttribute('aria-expanded', 'true');
@@ -194,42 +188,19 @@
 
             function closeMenu() {
                 navMenu.classList.remove('open');
-                overlay.classList.remove('active');
                 menuBtn.classList.remove('active');
                 document.body.classList.remove('menu-open');
                 menuBtn.setAttribute('aria-expanded', 'false');
             }
 
             function toggleMenu() {
-                if (navMenu.classList.contains('open')) {
-                closeMenu();
-                } else {
-                openMenu();
-                }
+                navMenu.classList.contains('open') ? closeMenu() : openMenu();
             }
 
-            // Toggle on button click
             menuBtn.addEventListener('click', toggleMenu);
 
-            // Close on overlay click
-            overlay.addEventListener('click', closeMenu);
-
-            // Close on ESC key
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                closeMenu();
-                }
-            });
-
-            // Close when clicking any nav link (mobile UX best practice)
-           const navLinks = document.querySelectorAll('.w-nav-link');
-
-            navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navMenu.classList.contains('open')) {
-                closeMenu();
-                }
-            });
+                if (e.key === 'Escape') closeMenu();
             });
             });
         </script>

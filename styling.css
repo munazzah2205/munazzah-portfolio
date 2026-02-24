@@ -6849,7 +6849,6 @@ textarea.w-input, textarea.w-select {
     overflow: hidden;
   }
 
-  /* Slide Panel */
   .w-nav-menu {
     position: fixed;
     top: 0;
@@ -6862,10 +6861,13 @@ textarea.w-input, textarea.w-select {
     padding: 80px 40px 40px 40px;
     transition: right 0.4s ease;
     z-index: 2000;
+
+    pointer-events: none;   /* critical */
   }
 
   .w-nav-menu.open {
     right: 0;
+    pointer-events: auto;
   }
 
   /* Links */
@@ -6893,11 +6895,11 @@ textarea.w-input, textarea.w-select {
   z-index: 1000;
   }
 
-  /* .mobile-overlay.active {
+  .mobile-overlay.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;   /* only clickable when active */
-  } */
+  }
 
   /* Fix link padding */
   .w-nav-menu .w-nav-link {

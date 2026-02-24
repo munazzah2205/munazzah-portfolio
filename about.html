@@ -25,11 +25,12 @@
                     <a href="about.html" class="navlink current-page w-nav-link" style="max-width: 1088px;">About</a>
                 </nav>
                 <img src="https://cdn.prod.website-files.com/692876531cfaf2c0670e44d1/697c3a10fce506f6f76bc2d7_Munzi%20logo.avif" loading="lazy" width="72" alt="" class="logo-navbar">
-                <div class="w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
-                    <div class="w-icon-nav-menu"></div>
-                </div>
+                <button class="w-nav-button" aria-label="Open menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
-            <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
         </div>
         <section class="section section-space home-hero">
             <div class="w-layout-blockcontainer container w-container">
@@ -273,6 +274,39 @@
             const walk = (x - startX); // drag speed
             slider.scrollLeft = scrollLeft - walk;
             });
+
+            document.addEventListener('DOMContentLoaded', function () {
+
+            const menuBtn = document.querySelector('.w-nav-button');
+            const navMenu = document.querySelector('.w-nav-menu');
+
+            if (!menuBtn || !navMenu) return;
+
+            function openMenu() {
+                navMenu.classList.add('open');
+                menuBtn.classList.add('active');
+                document.body.classList.add('menu-open');
+                menuBtn.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu() {
+                navMenu.classList.remove('open');
+                menuBtn.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            function toggleMenu() {
+                navMenu.classList.contains('open') ? closeMenu() : openMenu();
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+            });
+
         </script>
     </body>
 </html>
