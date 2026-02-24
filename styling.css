@@ -6895,6 +6895,29 @@ textarea.w-input, textarea.w-select {
     z-index: 1500;
   }
 
+  /* Fix link padding */
+.w-nav-menu .w-nav-link {
+  padding: 20px 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix stacking */
+.w-nav-menu {
+  z-index: 9999;
+}
+
+.w-nav-button {
+  z-index: 10000;
+}
+
+/* Overlay pointer behavior */
+.mobile-overlay {
+  pointer-events: none;
+}
+
+.mobile-overlay.active {
+  pointer-events: auto;
+}
   .mobile-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -6914,7 +6937,7 @@ textarea.w-input, textarea.w-select {
   }
 
   .hamburger-line {
-    width: 16px;
+    width: 20px;
     height: 2px;
     background-color: #000;
     transition: 0.3s ease;
