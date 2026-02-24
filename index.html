@@ -23,9 +23,9 @@
                     <a href="about.html" class="navlink w-nav-link" style="max-width: 1088px;">About</a>
                 </nav>
                 <img src="https://cdn.prod.website-files.com/692876531cfaf2c0670e44d1/697c3a10fce506f6f76bc2d7_Munzi%20logo.avif" loading="lazy" width="72" alt="" class="logo-navbar">
-                <div class="w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+               <button class="w-nav-button" aria-label="Open menu">
                     <div class="w-icon-nav-menu"></div>
-                </div>
+                </button>
             </div>
             <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
         </div>
@@ -170,5 +170,24 @@
         <script src="https://cdn.prod.website-files.com/692876531cfaf2c0670e44d1/js/webflow.schunk.43f4d187dbb3f1f5.js" type="text/javascript" integrity="sha384-KVXKfy/R0gSv66A6q4WASJVlvws430fQkrZ7C/sHZTG9oU1IJ12kUWAF2Rqy4yRj" crossorigin="anonymous"></script>
         <script src="https://cdn.prod.website-files.com/692876531cfaf2c0670e44d1/js/webflow.1fe6a666.9aaac89323e57c4f.js" type="text/javascript" integrity="sha384-Tgk0jJCX2nghPZaMFSdFonOXT7h/nfrFnUE+gJ1q/zbrGOoMZDCLKlAkWDvVDtC/" crossorigin="anonymous"></script> -->
         <container id="my-app-container"></container>
+        <script>
+            const menuBtn = document.querySelector('.w-nav-button');
+            const navMenu = document.querySelector('.w-nav-menu');
+
+            // Create overlay dynamically
+            const overlay = document.createElement('div');
+            overlay.classList.add('mobile-overlay');
+            document.body.appendChild(overlay);
+
+            menuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                overlay.classList.toggle('active');
+            });
+
+            overlay.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        </script>
     </body>
 </html>
