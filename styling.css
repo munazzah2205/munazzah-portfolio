@@ -6893,11 +6893,11 @@ textarea.w-input, textarea.w-select {
   z-index: 1000;
   }
 
-  .mobile-overlay.active {
+  /* .mobile-overlay.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;   /* only clickable when active */
-  }
+  } */
 
   /* Fix link padding */
   .w-nav-menu .w-nav-link {
