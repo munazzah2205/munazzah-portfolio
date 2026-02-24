@@ -6908,6 +6908,7 @@ textarea.w-input, textarea.w-select {
     border: none;
     padding: 18px;
     cursor: pointer;
+    
   }
 
   .hamburger-line {
@@ -6929,6 +6930,28 @@ textarea.w-input, textarea.w-select {
   .w-nav-button.active .hamburger-line:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+
+}
+
+/* Force hamburger visibility on mobile */
+@media screen and (max-width: 991px) {
+  .w-nav-button {
+    display: flex !important;
+    position: relative;
+    z-index: 4000;
+  }
+
+    .w-nav-link {
+  color: #000;
+  }
+
+  .w-nav-link:hover {
+  color: #8e6c88;
+  }
+
+  .w-nav-menu {
+  padding-top: 80px;
+
 }
 
 
