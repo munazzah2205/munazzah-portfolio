@@ -6885,7 +6885,7 @@ textarea.w-input, textarea.w-select {
     inset: 0;
     width: 100%;
     height: 100dvh;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.35);
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
