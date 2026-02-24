@@ -2,7 +2,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
-  zoom: 0.9;
+  /* zoom: 0.9; */
 }
 
 body {
@@ -6845,7 +6845,6 @@ textarea.w-input, textarea.w-select {
 
 @media screen and (max-width: 991px) {
 
-  /* Prevent background scroll when menu open */
   body.menu-open {
     overflow: hidden;
   }
@@ -6854,42 +6853,46 @@ textarea.w-input, textarea.w-select {
   .w-nav-menu {
     position: fixed;
     top: 0;
-    right: -320px; /* fully hidden off-canvas */
+    right: -320px;
     width: 320px;
-    height: 100dvh; /* fixes viewport height gap */
-    background: #ffffff; /* cleaner than grey */
+    height: 100vh;
+    background: #ffffff;
     display: flex !important;
     flex-direction: column;
-    align-items: flex-start;
     padding: 80px 40px 40px 40px;
     transition: right 0.4s ease;
-    z-index: 3000;
+    z-index: 2000;
   }
 
-  /* When menu opens */
   .w-nav-menu.open {
     right: 0;
   }
 
-  /* Vertical links */
+  /* Links */
   .w-nav-link {
     display: block;
     width: 100%;
     padding: 20px 0;
     font-size: 18px;
+    color: #000;
+  }
+
+  .w-nav-link:hover {
+    color: #8e6c88;
   }
 
   /* Overlay */
   .mobile-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100dvh;
-    background: rgba(255, 255, 255, 0.35);
+    height: 100vh;
+    background: rgba(0,0,0,0.35);
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
-    z-index: 2500;
+    z-index: 1500;
   }
 
   .mobile-overlay.active {
@@ -6897,18 +6900,17 @@ textarea.w-input, textarea.w-select {
     visibility: visible;
   }
 
-  /* ---------- Custom Hamburger ---------- */
-
+  /* Hamburger */
   .w-nav-button {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    justify-content: center;
     gap: 5px;
     background: none;
     border: none;
     padding: 18px;
     cursor: pointer;
-    
+    position: relative;
+    z-index: 3000;
   }
 
   .hamburger-line {
@@ -6918,7 +6920,6 @@ textarea.w-input, textarea.w-select {
     transition: 0.3s ease;
   }
 
-  /* Hamburger → X animation */
   .w-nav-button.active .hamburger-line:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -6931,27 +6932,6 @@ textarea.w-input, textarea.w-select {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-}
-
-/* Force hamburger visibility on mobile */
-@media screen and (max-width: 991px) {
-  .w-nav-button {
-    display: flex !important;
-    position: relative;
-    z-index: 4000;
-  }
-
-    .w-nav-link {
-  color: #000;
-  }
-
-  .w-nav-link:hover {
-  color: #8e6c88;
-  }
-
-  .w-nav-menu {
-  padding-top: 80px;
-  }
 }
 
 
