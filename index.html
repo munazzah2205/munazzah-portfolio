@@ -24,7 +24,11 @@
                 </nav>
                 <img src="https://cdn.prod.website-files.com/692876531cfaf2c0670e44d1/697c3a10fce506f6f76bc2d7_Munzi%20logo.avif" loading="lazy" width="72" alt="" class="logo-navbar">
                <button class="w-nav-button" aria-label="Open menu">
-                    <div class="w-icon-nav-menu"></div>
+                    <button class="w-nav-button" aria-label="Open menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
                 </button>
             </div>
             <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
@@ -171,22 +175,61 @@
         <script src="https://cdn.prod.website-files.com/692876531cfaf2c0670e44d1/js/webflow.1fe6a666.9aaac89323e57c4f.js" type="text/javascript" integrity="sha384-Tgk0jJCX2nghPZaMFSdFonOXT7h/nfrFnUE+gJ1q/zbrGOoMZDCLKlAkWDvVDtC/" crossorigin="anonymous"></script> -->
         <container id="my-app-container"></container>
         <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
             const menuBtn = document.querySelector('.w-nav-button');
             const navMenu = document.querySelector('.w-nav-menu');
+
+            if (!menuBtn || !navMenu) return;
 
             // Create overlay dynamically
             const overlay = document.createElement('div');
             overlay.classList.add('mobile-overlay');
             document.body.appendChild(overlay);
 
-            menuBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('open');
-                overlay.classList.toggle('active');
-            });
+            function openMenu() {
+                navMenu.classList.add('open');
+                overlay.classList.add('active');
+                menuBtn.classList.add('active');
+                document.body.classList.add('menu-open');
+                menuBtn.setAttribute('aria-expanded', 'true');
+            }
 
-            overlay.addEventListener('click', () => {
+            function closeMenu() {
                 navMenu.classList.remove('open');
                 overlay.classList.remove('active');
+                menuBtn.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            function toggleMenu() {
+                if (navMenu.classList.contains('open')) {
+                closeMenu();
+                } else {
+                openMenu();
+                }
+            }
+
+            // Toggle on button click
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // Close on overlay click
+            overlay.addEventListener('click', closeMenu);
+
+            // Close on ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                closeMenu();
+                }
+            });
+
+            // Close when clicking any nav link (mobile UX best practice)
+            const navLinks = document.querySelectorAll('.w-nav-link');
+                navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+             });
+
             });
         </script>
     </body>
